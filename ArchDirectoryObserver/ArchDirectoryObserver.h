@@ -1,6 +1,6 @@
 
-//  ArchDirectoryObserver.h  ArchDirectoryObserver
-//  Created by Brent Royal-Gordon on 2/19/12.  Copyright (c) 2012 Architechies. All rights reserved.
+//  ArchDirectoryObserver.h  Packer
+//  Created by Brent Royal-Gordon on 12/29/10. Copyright 2010 Architechies. All rights reserved.
 
 @import Foundation;
 
@@ -15,32 +15,28 @@ typedef id <NSCopying, NSCoding> ArchDirectoryObservationResumeToken;
 /*! These constants indicate the reason that the observation center believes a descendant scan is needed. */
 typedef NS_ENUM(int,ArchDirectoryObserverDescendantReason)
 {
-  ArchDirectoryObserverNoHistoryReason = 0,
-  ArchDirectoryObserverCoalescedReason,
-  ArchDirectoryObserverEventDroppedReason,
-  ArchDirectoryObserverEventIDsWrappedReason,
-  ArchDirectoryObserverVolumeMountedReason,
-  ArchDirectoryObserverVolumeUnmountedReason
+  ArchDirectoryObserverNoHistoryReason,       ArchDirectoryObserverCoalescedReason,
+  ArchDirectoryObserverEventDroppedReason,    ArchDirectoryObserverEventIDsWrappedReason,
+  ArchDirectoryObserverVolumeMountedReason,   ArchDirectoryObserverVolumeUnmountedReason
 };
 
 /*! Give a more humane, aka human-readable description for the "reason". */
 NS_INLINE NSString* DescribeReason(ArchDirectoryObserverDescendantReason r){ return
 
-  @[/* ArchDirectoryObserverNoHistoryReason */        @"An observer was added w/ nil resumeToken, so dir's history is unknown.",
-    /* ArchDirectoryObserverCoalescedReason */        @"The observatio. center coalesced events nearby events.",
-    /* ArchDirectoryObserverEventDroppedReason */     @"Events came too fast and some were dropped.",
-    /* ArchDirectoryObserverEventIDsWrappedReason */  @"Event ID numbers have wrapped and so the history is not reliable.",
-    /* ArchDirectoryObserverVolumeMountedReason */    @"A volume was mounted in a subdirectory.",
-    /* ArchDirectoryObserverVolumeUnmountedReason */  @"A volume was unmounted in a subdirectory.", @"UNKNOWN REASON"][MIN(r,6)];
+  @[/* ArchDirectoryObserverNoHistoryReason       */ @"An observer was added w/ nil resumeToken, so dir's history is unknown.",
+    /* ArchDirectoryObserverCoalescedReason       */ @"The observatio. center coalesced events nearby events.",
+    /* ArchDirectoryObserverEventDroppedReason    */ @"Events came too fast and some were dropped.",
+    /* ArchDirectoryObserverEventIDsWrappedReason */ @"Event ID numbers have wrapped and so the history is not reliable.",
+    /* ArchDirectoryObserverVolumeMountedReason   */ @"A volume was mounted in a subdirectory.",
+    /* ArchDirectoryObserverVolumeUnmountedReason */ @"A volume was unmounted in a subdirectory.", @"UNKNOWN REASON"][MIN(r,6)];
 }
 
 /*! An enum and human-readable description for the "relatioship" of the changed directory and it's observer. */
 typedef NS_OPTIONS(int,ArchDirectoryRelationship)
 {
-    ArchDirectoryRelatedChildren    = 1 << 0,
-    ArchDirectoryRelatedDescendant  = 1 << 1,
-    ArchDirectoryRelatedAncestor    = 1 << 2
+    ArchDirectoryRelatedChildren = 1 << 0, ArchDirectoryRelatedDescendant  = 1 << 1, ArchDirectoryRelatedAncestor = 1 << 2
 };
+
 NS_INLINE NSString *DescribeRelationship (ArchDirectoryRelationship r) { return @[@"Child", @"Descnendant", @"ancestor"][r]; }
 
 /* Block Callback mechanism when asking for a NSURL's token */
@@ -144,6 +140,37 @@ typedef NS_OPTIONS(int, ArchDirectoryObserverOptions) {
 - (void) writeToFile:(NSString*)path;
 
 @property (readonly) ArchDirectoryObservationResumeToken token;
-@property (readonly) NSURL * URL;
+@property (readonly)  NSURL * URL;
 @property (readonly) NSDate * date;
+
 @end
+
+@import CoreServices;
+
+/*! @abstract The observation center is where all the action happens.  
+    @note     You usually only need to work with it if you want to observe on a background thread.
+              The interface is not terribly different from the NSURL (DirectoryObserver) category.
+ */
+
+@interface ArchDirectoryObservationCenter : NSObject
+
+- initWithRunLoop:(NSRunLoop*)runLoop;
+
++ (instancetype) mainObservationCenter;
+
+@property (readonly) NSRunLoop * runLoop;
+
+/*! @warning We will retain the url, but you have to retain the observer. */
+
+- (void)                     addObserver:(id <ArchDirectoryObserver>)obsrvr forDirectoryAtURL:(NSURL*)url
+                             ignoresSelf:(BOOL)ignoresSelf                         responsive:(BOOL)responsive
+                                                                                  resumeToken:(id)resumeToken;
+
+- (void)                  removeObserver:(id <ArchDirectoryObserver>)obsrvr forDirectoryAtURL:(NSURL*)url;
+
+- (void) removeObserverForAllDirectories:(id <ArchDirectoryObserver>)obsrvr;
+
+- (ArchDirectoryObservationResumeToken)laterOfResumeToken:(ArchDirectoryObservationResumeToken)t1
+                                           andResumeToken:(ArchDirectoryObservationResumeToken)t2;
+@end
+

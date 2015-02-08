@@ -2,7 +2,7 @@
 //  ArchDirectoryObserver.m  Packer
 //  Created by Brent Royal-Gordon on 12/29/10.  Copyright 2010 Architechies. All rights reserved.
 
-#import "ArchDirectoryObservationCenter.h"
+#import "ArchDirectoryObserver.h"
 
 @interface ArchDirectoryEventStream : NSObject
 
