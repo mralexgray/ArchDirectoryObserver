@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7BA1E51C1938F25500860F39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1E51B1938F25500860F39 /* main.m */; };
+		7BA1E51C1938F25500860F39 /* ArchDirectoryObserverExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1E51B1938F25500860F39 /* ArchDirectoryObserverExample.m */; };
 		7BBF2C5B1940A74500FC6480 /* ArchDirectoryObserver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848B2AF914F0EFA8003413DC /* ArchDirectoryObserver.framework */; };
 		848B2B2D14F0EFCB003413DC /* ArchDirectoryObservationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 848B2B2914F0EFCB003413DC /* ArchDirectoryObservationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		848B2B2E14F0EFCB003413DC /* ArchDirectoryObservationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B2B2A14F0EFCB003413DC /* ArchDirectoryObservationCenter.m */; };
@@ -40,13 +40,13 @@
 
 /* Begin PBXFileReference section */
 		7BA1E5171938F25500860F39 /* Example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Example; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BA1E51B1938F25500860F39 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7BA1E51B1938F25500860F39 /* ArchDirectoryObserverExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ArchDirectoryObserverExample.m; path = Example/ArchDirectoryObserverExample.m; sourceTree = "<group>"; };
 		848B2AF914F0EFA8003413DC /* ArchDirectoryObserver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ArchDirectoryObserver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		848B2B0414F0EFA8003413DC /* ArchDirectoryObserver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ArchDirectoryObserver-Info.plist"; sourceTree = "<group>"; };
-		848B2B0914F0EFA8003413DC /* ArchDirectoryObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArchDirectoryObserver.h; sourceTree = "<group>"; wrapsLines = 1; };
-		848B2B2914F0EFCB003413DC /* ArchDirectoryObservationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchDirectoryObservationCenter.h; sourceTree = "<group>"; };
-		848B2B2A14F0EFCB003413DC /* ArchDirectoryObservationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchDirectoryObservationCenter.m; sourceTree = "<group>"; };
-		848B2B2C14F0EFCB003413DC /* NSURL+DirectoryObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DirectoryObserver.m"; sourceTree = "<group>"; };
+		848B2B0914F0EFA8003413DC /* ArchDirectoryObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ArchDirectoryObserver.h; path = ArchDirectoryObserver/ArchDirectoryObserver.h; sourceTree = "<group>"; wrapsLines = 1; };
+		848B2B2914F0EFCB003413DC /* ArchDirectoryObservationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArchDirectoryObservationCenter.h; path = ArchDirectoryObserver/ArchDirectoryObservationCenter.h; sourceTree = "<group>"; };
+		848B2B2A14F0EFCB003413DC /* ArchDirectoryObservationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArchDirectoryObservationCenter.m; path = ArchDirectoryObserver/ArchDirectoryObservationCenter.m; sourceTree = "<group>"; };
+		848B2B2C14F0EFCB003413DC /* NSURL+DirectoryObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+DirectoryObserver.m"; path = "ArchDirectoryObserver/NSURL+DirectoryObserver.m"; sourceTree = "<group>"; };
 		848B2B4914F0F78C003413DC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,43 +69,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7BA1E51A1938F25500860F39 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				7BA1E5171938F25500860F39 /* Example */,
-				7BA1E51B1938F25500860F39 /* main.m */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
 		848B2AED14F0EFA8003413DC = {
 			isa = PBXGroup;
 			children = (
 				848B2B4914F0F78C003413DC /* README.md */,
-				848B2B0214F0EFA8003413DC /* ArchDirectoryObserver */,
-				7BA1E51A1938F25500860F39 /* Example */,
-			);
-			sourceTree = "<group>";
-		};
-		848B2B0214F0EFA8003413DC /* ArchDirectoryObserver */ = {
-			isa = PBXGroup;
-			children = (
+				7BA1E51B1938F25500860F39 /* ArchDirectoryObserverExample.m */,
+				848B2B0314F0EFA8003413DC /* Products */,
 				848B2B0914F0EFA8003413DC /* ArchDirectoryObserver.h */,
 				848B2B2C14F0EFCB003413DC /* NSURL+DirectoryObserver.m */,
 				848B2B2914F0EFCB003413DC /* ArchDirectoryObservationCenter.h */,
 				848B2B2A14F0EFCB003413DC /* ArchDirectoryObservationCenter.m */,
-				848B2B0314F0EFA8003413DC /* Framework */,
 			);
-			path = ArchDirectoryObserver;
 			sourceTree = "<group>";
 		};
-		848B2B0314F0EFA8003413DC /* Framework */ = {
+		848B2B0314F0EFA8003413DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				848B2AF914F0EFA8003413DC /* ArchDirectoryObserver.framework */,
 				848B2B0414F0EFA8003413DC /* ArchDirectoryObserver-Info.plist */,
+				7BA1E5171938F25500860F39 /* Example */,
+				848B2AF914F0EFA8003413DC /* ArchDirectoryObserver.framework */,
 			);
-			name = Framework;
+			name = Products;
+			path = ArchDirectoryObserver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +151,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = Architechies;
 			};
 			buildConfigurationList = 848B2AF214F0EFA8003413DC /* Build configuration list for PBXProject "ArchDirectoryObserver" */;
@@ -203,7 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BA1E51C1938F25500860F39 /* main.m in Sources */,
+				7BA1E51C1938F25500860F39 /* ArchDirectoryObserverExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,8 +274,10 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -324,9 +311,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
